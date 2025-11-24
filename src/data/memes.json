@@ -1,0 +1,77 @@
+[
+    {
+        "id": "meme-001",
+        "type": "image",
+        "title": "The induced demand cycle",
+        "mediaUrl": "https://images.unsplash.com/photo-1570125909232-eb263c188f7e?auto=format&fit=crop&w=800&q=80",
+        "attribution": "Unsplash / @photoholgic",
+        "tags": [
+            "induced demand",
+            "traffic",
+            "highway"
+        ],
+        "description": "Just one more lane will fix it, I swear.",
+        "createdAt": "2023-10-26T10:00:00Z",
+        "semanticMessage": "Critique of highway expansion logic",
+        "mood": "Satirical"
+    },
+    {
+        "id": "meme-002",
+        "type": "youtube",
+        "title": "Not Just Bikes: Stroads",
+        "youtubeId": "ORzNZUeUXRw",
+        "startTime": 120,
+        "endTime": 180,
+        "attribution": "Not Just Bikes",
+        "tags": [
+            "stroads",
+            "safety",
+            "infrastructure"
+        ],
+        "description": "The ugly, dangerous hybrid of a street and a road.",
+        "createdAt": "2023-10-27T14:30:00Z"
+    },
+    {
+        "id": "meme-003",
+        "type": "social_embed",
+        "platform": "twitter",
+        "embedUrl": "https://twitter.com/UrbanistMeme/status/1234567890",
+        "title": "Trains are freedom",
+        "attribution": "@UrbanistMeme",
+        "tags": [
+            "trains",
+            "freedom",
+            "mobility"
+        ],
+        "description": "Why driving everywhere isn't actually freedom.",
+        "createdAt": "2023-10-28T09:15:00Z"
+    },
+    {
+        "id": "meme-004",
+        "type": "image",
+        "title": "Walkable Cities",
+        "mediaUrl": "https://images.unsplash.com/photo-1449824913929-2b3a3e3db33a?auto=format&fit=crop&w=800&q=80",
+        "attribution": "Unsplash / @joshuaearle",
+        "tags": [
+            "walkability",
+            "urban design",
+            "lifestyle"
+        ],
+        "description": "Imagine walking to get groceries.",
+        "createdAt": "2023-10-29T16:20:00Z"
+    },
+    {
+        "id": "meme-005",
+        "type": "youtube",
+        "title": "Amsterdam Bicycles",
+        "youtubeId": "4v1d89e_72g",
+        "attribution": "Streetfilms",
+        "tags": [
+            "bikes",
+            "amsterdam",
+            "cycling"
+        ],
+        "description": "How Amsterdam became the bicycle capital of the world.",
+        "createdAt": "2023-10-30T11:00:00Z"
+    }
+]
