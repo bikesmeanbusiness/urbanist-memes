@@ -12,23 +12,38 @@ export async function POST(request: Request) {
             );
         }
 
+        let frontmatter = `---
+attribution: "${data.attribution || 'Anonymous'}"
+type: "${data.type}"
+`;
+
+        if (data.type === 'youtube') {
+            // Basic extraction of ID if full URL is provided
+            let videoId = data.mediaUrl;
+            try {
+                const url = new URL(data.mediaUrl);
+                if (url.hostname.includes('youtube.com')) {
+                    videoId = url.searchParams.get('v');
+                } else if (url.hostname.includes('youtu.be')) {
+                    videoId = url.pathname.slice(1);
+                }
+            } catch (e) {
+                // Assume it's already an ID if not a valid URL
+            }
+            frontmatter += `youtubeId: "${videoId}"\n`;
+        } else if (data.type === 'social_embed') {
+            frontmatter += `embedUrl: "${data.mediaUrl}"\n`;
+            // Default platform to twitter for now, could be inferred
+            frontmatter += `platform: "twitter"\n`;
+        } else {
+            frontmatter += `mediaUrl: "${data.mediaUrl}"\n`;
+        }
+
+        frontmatter += '---\n';
+
         const payload = {
-            title: `[Submission] ${data.title}`,
-            body: `
-### New Meme Submission
-
-**Title**: ${data.title}
-**Type**: ${data.type}
-**Attribution**: ${data.attribution}
-**Tags**: ${data.tags.join(', ')}
-**Description**: ${data.description}
-
-**Media URL**: ${data.mediaUrl}
-
-\`\`\`json
-${JSON.stringify(data, null, 2)}
-\`\`\`
-      `,
+            title: data.title,
+            body: `${frontmatter}\n${data.description || ''}`,
             labels: ['submission'],
         };
 
