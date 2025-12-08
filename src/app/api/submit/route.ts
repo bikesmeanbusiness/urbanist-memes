@@ -1,7 +1,31 @@
 import { NextResponse } from 'next/server';
 
+const rateLimit = new Map<string, { count: number; lastReset: number }>();
+const LIMIT = 5; // submissions
+const WINDOW = 60 * 60 * 1000; // 1 hour
+
 export async function POST(request: Request) {
     try {
+        // Rate Limiting
+        const ip = request.headers.get('x-forwarded-for') || 'unknown';
+        const now = Date.now();
+        const record = rateLimit.get(ip) || { count: 0, lastReset: now };
+
+        if (now - record.lastReset > WINDOW) {
+            record.count = 0;
+            record.lastReset = now;
+        }
+
+        if (record.count >= LIMIT) {
+            return NextResponse.json(
+                { error: 'Too many submissions. Please try again later.' },
+                { status: 429 }
+            );
+        }
+
+        record.count++;
+        rateLimit.set(ip, record);
+
         const data = await request.json();
 
         // Basic validation
