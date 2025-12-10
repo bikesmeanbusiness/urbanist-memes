@@ -2,6 +2,8 @@ import { getAllMemes } from '@/lib/memes';
 import { MemeGallery } from '@/components/meme-gallery';
 import Link from 'next/link';
 
+import { siteConfig } from '@/config/site';
+
 export default async function Home() {
   const memes = await getAllMemes();
 
@@ -11,10 +13,10 @@ export default async function Home() {
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
-              Urbanist Memes
+              {siteConfig.hero.title}
             </h1>
             <p className="mt-2 text-lg text-gray-600 dark:text-gray-400">
-              A curated collection of pro-city, pro-transit, and pro-people content.
+              {siteConfig.hero.subtitle}
             </p>
           </div>
           <Link
